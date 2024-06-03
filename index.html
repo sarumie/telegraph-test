@@ -23,7 +23,7 @@
           return;
         }
 
-        const allowedExtensions = ["gif", "jpeg", "jpg", "png", "mp4"];
+        const allowedExtensions = ["gif", "jpeg", "jpg", "png"];
         const fileExt = file.name.split(".").pop();
 
         if (!allowedExtensions.includes(fileExt)) {
@@ -40,6 +40,10 @@
           const response = await fetch("https://telegra.ph/upload", {
             method: "POST",
             body: formData,
+            // mode: "cors",
+            headers: {
+              "Access-Control-Allow-Origin": "*",
+            },
           });
 
           if (!response.ok) {
